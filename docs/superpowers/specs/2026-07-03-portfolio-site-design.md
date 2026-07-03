@@ -43,8 +43,11 @@ Visual language: The Witcher 3's pause menu — vertical section list, dark leat
 4. Particle background + Web Worker.
 5. **Stretch, only after 1-4 are solid:** WebGL/shader-driven background instead of canvas2D particles, subtle original UI sound on hover/select, optional keyboard navigation on desktop (arrow keys + Enter) as a bonus on top of — not instead of — full mouse/touch support.
 
+## Content
+
+Blog ships with **two short seed posts** (not empty) so the section isn't a dead end at launch — reasonable topics: e.g. building this site itself (meta, authentic, no fabrication risk) and something from his real project history (engine/tooling choice notes). He can add more or edit these later.
+
 ## Out of scope for this spec
 
-- Actual blog post content (he'll write it later).
 - Netlify account/DNS changes (repo repointing is a manual step on his end after first push).
 - CMS/auth/comments — the blog stays static Markdown, no backend.
