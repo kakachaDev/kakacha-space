@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
 import MenuNav from './MenuNav.vue'
@@ -15,6 +15,10 @@ const router = createRouter({
 })
 
 describe('MenuNav', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
   it('renders exactly 5 section links', async () => {
     router.push('/')
     await router.isReady()
@@ -28,5 +32,20 @@ describe('MenuNav', () => {
     await router.isReady()
     const wrapper = mount(MenuNav, { global: { plugins: [router] } })
     expect(wrapper.text()).toContain('Quest Log')
+  })
+
+  it('renders a sound toggle that is off by default', async () => {
+    router.push('/')
+    await router.isReady()
+    const wrapper = mount(MenuNav, { global: { plugins: [router] } })
+    expect(wrapper.find('.menu-nav__sound-toggle').text()).toContain('выкл')
+  })
+
+  it('clicking the sound toggle flips its label', async () => {
+    router.push('/')
+    await router.isReady()
+    const wrapper = mount(MenuNav, { global: { plugins: [router] } })
+    await wrapper.find('.menu-nav__sound-toggle').trigger('click')
+    expect(wrapper.find('.menu-nav__sound-toggle').text()).toContain('вкл')
   })
 })
