@@ -1,0 +1,46 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/cinzel/500.css';
+@import '@fontsource/cinzel/700.css';
+
+:root {
+  --bg: #14100d;
+  --panel: #1f1912;
+  --panel-border: #3a2f22;
+  --accent-red: #8a1f1f;
+  --accent-gold: #c9a15a;
+  --text: #e8dfd0;
+  --text-dim: #a89a82;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.display {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: var(--accent-gold);
+}
+
+#app-root {
+  min-height: 100vh;
+  position: relative;
+}
