@@ -13,10 +13,12 @@
   "dependencies": {
     "@fontsource/cinzel": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
+    "markdown-it": "^14.3.0",
     "vue": "^3.5.39",
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.13.2",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitest/coverage-v8": "^4.1.9",
