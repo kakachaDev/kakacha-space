@@ -5,15 +5,16 @@ import { useMenuSound } from '../composables/useMenuSound'
 
 interface MenuItem {
   label: string
+  sub: string
   to: { name: string }
 }
 
 const items: MenuItem[] = [
-  { label: 'Character', to: { name: 'home' } },
-  { label: 'Quest Log', to: { name: 'projects' } },
-  { label: 'Inventory', to: { name: 'stack' } },
-  { label: 'Chronicle', to: { name: 'blog' } },
-  { label: 'Notice Board', to: { name: 'contact' } },
+  { label: 'Character', sub: 'обо мне', to: { name: 'home' } },
+  { label: 'Quest Log', sub: 'проекты', to: { name: 'projects' } },
+  { label: 'Inventory', sub: 'стек', to: { name: 'stack' } },
+  { label: 'Chronicle', sub: 'блог', to: { name: 'blog' } },
+  { label: 'Notice Board', sub: 'контакты', to: { name: 'contact' } },
 ]
 
 const containerRef = ref<HTMLElement | null>(null)
@@ -35,6 +36,7 @@ const { enabled: soundEnabled, toggle: toggleSound, playHover, playSelect } = us
           @click="playSelect"
         >
           {{ item.label }}
+          <span class="menu-nav__sub">{{ item.sub }}</span>
         </router-link>
       </li>
     </ul>
@@ -61,6 +63,15 @@ const { enabled: soundEnabled, toggle: toggleSound, playHover, playSelect } = us
   font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   border-left: 3px solid transparent;
+}
+
+.menu-nav__sub {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
 }
 
 .menu-nav__link--active,

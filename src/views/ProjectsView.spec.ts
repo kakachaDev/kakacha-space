@@ -1,17 +1,24 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ProjectsView from './ProjectsView.vue'
+import { projects } from '../data/projects'
 
 describe('ProjectsView', () => {
-  it('renders all 10 projects', () => {
+  it('renders a card for every project', () => {
     const wrapper = mount(ProjectsView)
     const cards = wrapper.findAllComponents({ name: 'ProjectCard' })
-    expect(cards).toHaveLength(10)
+    expect(cards).toHaveLength(projects.length)
   })
 
-  it('groups projects under category headings', () => {
+  it('groups projects under russian category headings', () => {
     const wrapper = mount(ProjectsView)
-    expect(wrapper.text()).toContain('games')
-    expect(wrapper.text()).toContain('minecraft')
+    expect(wrapper.text()).toContain('Игры')
+    expect(wrapper.text()).toContain('Minecraft-плагины')
+  })
+
+  it('shows status badges and tags', () => {
+    const wrapper = mount(ProjectsView)
+    expect(wrapper.findAll('[data-testid="status"]').length).toBe(projects.length)
+    expect(wrapper.text()).toContain('в разработке')
   })
 })
