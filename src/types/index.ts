@@ -9,3 +9,8 @@ export interface Project {
   demoUrl?: string
   archived?: boolean
 }
+
+export interface StackItem {
+  name: string
+  note: string
+}
