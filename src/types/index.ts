@@ -1,5 +1,7 @@
 export type ProjectCategory = 'platform' | 'games' | 'minecraft' | 'audio' | 'tools'
 
+export type ProjectStatus = 'active' | 'done' | 'onhold'
+
 export interface Project {
   slug: string
   name: string
@@ -7,7 +9,11 @@ export interface Project {
   category: ProjectCategory
   repoUrl: string
   demoUrl?: string
-  archived?: boolean
+  icon: string
+  tags: string[]
+  year?: number
+  status: ProjectStatus
+  highlight?: string
 }
 
 export interface StackItem {
@@ -15,11 +21,20 @@ export interface StackItem {
   note: string
 }
 
+export interface StackCategory {
+  id: string
+  title: string
+  items: StackItem[]
+}
+
 export interface BlogPostMeta {
   slug: string
   title: string
   date: string
   excerpt: string
+  tags: string[]
+  readingMinutes: number
+  cover?: string
 }
 
 export interface BlogPost extends BlogPostMeta {

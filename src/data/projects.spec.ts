@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { projects } from './projects'
 
 describe('projects data', () => {
-  it('has exactly 10 entries', () => {
-    expect(projects).toHaveLength(10)
+  it('has exactly 11 entries', () => {
+    expect(projects).toHaveLength(11)
   })
 
   it('every project has a unique slug', () => {
@@ -21,6 +21,14 @@ describe('projects data', () => {
     const allowed = new Set(['platform', 'games', 'minecraft', 'audio', 'tools'])
     for (const p of projects) {
       expect(allowed.has(p.category)).toBe(true)
+    }
+  })
+
+  it('every project has an icon, tags and status', () => {
+    for (const p of projects) {
+      expect(p.icon.length).toBeGreaterThan(0)
+      expect(p.tags.length).toBeGreaterThan(0)
+      expect(['active', 'done', 'onhold']).toContain(p.status)
     }
   })
 })
