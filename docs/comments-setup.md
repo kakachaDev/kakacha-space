@@ -40,6 +40,13 @@ VITE_REMARK42_SITE_ID=kakacha-space
 
 5. Пересобери и задеплой сайт — блок «Комментарии» появится под постами.
 
+> **Текущее состояние (2026-07-03):** выбран giscus. Discussions в репо включены,
+> ID прописаны в `.env.production` (категория — Announcements: создать свою через API нельзя,
+> а Announcement-тип как раз рекомендуется — писать в него могут только мейнтейнеры и giscus).
+> Осталось одно ручное действие: установить GitHub-приложение giscus на репозиторий —
+> https://github.com/apps/giscus → Install → выбрать kakacha-space. До этого виджет
+> будет показывать «giscus is not installed on this repository».
+
 ## Вариант 2: giscus (без сервера, 5 минут)
 
 Комментарии живут в GitHub Discussions этого репозитория. Бесплатно, без сервера,
