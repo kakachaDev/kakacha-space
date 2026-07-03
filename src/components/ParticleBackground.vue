@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useParticleWorker } from '../composables/useParticleWorker'
 import { theme } from '../theme'
+import { ParticleGLRenderer } from '../webgl/particleRenderer'
 
 function hexToRgb(hex: string): { r: number; g: number; b: number } {
   const r = parseInt(hex.slice(1, 3), 16)
@@ -19,11 +20,9 @@ const { particles } = useParticleWorker(
   50
 )
 
-function draw() {
-  const canvas = canvasRef.value
-  if (!canvas) return
-  const ctx = canvas.getContext('2d')
-  if (!ctx) return
+let glRenderer: ParticleGLRenderer | null = null
+
+function draw2d(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   if (canvas.width !== window.innerWidth) canvas.width = window.innerWidth
   if (canvas.height !== window.innerHeight) canvas.height = window.innerHeight
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -33,10 +32,37 @@ function draw() {
     ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.opacity})`
     ctx.fill()
   }
+}
+
+function drawGl(canvas: HTMLCanvasElement) {
+  if (canvas.width !== window.innerWidth) canvas.width = window.innerWidth
+  if (canvas.height !== window.innerHeight) canvas.height = window.innerHeight
+  glRenderer!.draw(particles.value, canvas.width, canvas.height)
+}
+
+function draw() {
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  if (glRenderer) {
+    drawGl(canvas)
+  } else {
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    draw2d(ctx, canvas)
+  }
+
   requestAnimationFrame(draw)
 }
 
 onMounted(() => {
+  const canvas = canvasRef.value
+  if (canvas) {
+    const gl = canvas.getContext('webgl')
+    if (gl) {
+      glRenderer = new ParticleGLRenderer(gl, theme.colors.accentGold)
+    }
+  }
   requestAnimationFrame(draw)
 })
 </script>
