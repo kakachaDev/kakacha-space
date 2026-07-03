@@ -60,7 +60,11 @@ onMounted(() => {
   if (canvas) {
     const gl = canvas.getContext('webgl')
     if (gl) {
-      glRenderer = new ParticleGLRenderer(gl, theme.colors.accentGold)
+      try {
+        glRenderer = new ParticleGLRenderer(gl, theme.colors.accentGold)
+      } catch {
+        glRenderer = null
+      }
     }
   }
   requestAnimationFrame(draw)

@@ -41,4 +41,19 @@ describe('ParticleBackground', () => {
     expect(ParticleGLRenderer).toHaveBeenCalledWith(fakeGl, expect.any(String))
     getContextSpy.mockRestore()
   })
+
+  it('falls back gracefully when the WebGL renderer throws during construction', () => {
+    vi.mocked(ParticleGLRenderer).mockClear()
+    const fakeGl = {} as WebGLRenderingContext
+    const getContextSpy = vi
+      .spyOn(HTMLCanvasElement.prototype, 'getContext')
+      .mockImplementation(((type: string) => (type === 'webgl' ? fakeGl : null)) as typeof HTMLCanvasElement.prototype.getContext)
+    vi.mocked(ParticleGLRenderer).mockImplementationOnce(() => {
+      throw new Error('shader compile failed')
+    })
+
+    expect(() => mount(ParticleBackground)).not.toThrow()
+
+    getContextSpy.mockRestore()
+  })
 })
