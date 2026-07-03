@@ -9,6 +9,11 @@ const router = createRouter({
     { path: '/blog', name: 'blog', component: () => import('../views/BlogIndexView.vue') },
     { path: '/blog/:slug', name: 'blog-post', component: () => import('../views/BlogPostView.vue'), props: true },
     { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue'),
+    },
   ],
 })
 

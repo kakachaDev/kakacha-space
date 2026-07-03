@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useParticleWorker } from '../composables/useParticleWorker'
+import { theme } from '../theme'
+
+function hexToRgb(hex: string): { r: number; g: number; b: number } {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return { r, g, b }
+}
+
+const { r, g, b } = hexToRgb(theme.colors.accentGold)
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 const { particles } = useParticleWorker(
@@ -20,7 +30,7 @@ function draw() {
   for (const p of particles.value) {
     ctx.beginPath()
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-    ctx.fillStyle = `rgba(201, 161, 90, ${p.opacity})`
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.opacity})`
     ctx.fill()
   }
   requestAnimationFrame(draw)

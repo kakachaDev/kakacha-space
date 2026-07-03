@@ -5,7 +5,7 @@ console pause menu (stylistic inspiration only, no third-party game assets used)
 
 ## Features
 
-- Mobile-first responsive menu (single-column drill-in → two-pane on wider screens)
+- Mobile-first responsive menu (stacked single-column on narrow screens, two-pane rail+content on wider screens)
 - Sections: Character (about), Quest Log (projects), Inventory (tech stack), Chronicle (blog), Notice Board (contact)
 - PWA: installable, offline app-shell caching
 - Ambient particle background computed in a Web Worker, off the main thread
