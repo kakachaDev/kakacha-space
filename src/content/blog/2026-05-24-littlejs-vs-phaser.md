@@ -2,6 +2,7 @@
 title: LittleJS vs Phaser — почему выбрал LittleJS для мини-игр
 date: 2026-05-24
 excerpt: Разбирался с движками для Flag Mines и Sky Dash — победил LittleJS, и вот почему.
+tags: littlejs, gamedev, движки
 ---
 
 Перед тем как начать Flag Mines и Sky Dash, сравнивал LittleJS и Phaser 3 (и голый Canvas2D

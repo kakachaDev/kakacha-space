@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="monospace">
+  <rect width="640" height="280" fill="#1f1912"/>
+  <rect x="0.5" y="0.5" width="639" height="279" fill="none" stroke="#3a2f22"/>
+  <line x1="320" y1="20" x2="320" y2="260" stroke="#3a2f22" stroke-dasharray="4 5"/>
+  <!-- SVG side -->
+  <text x="165" y="50" fill="#c9a15a" font-size="16" text-anchor="middle">renderer: svg</text>
+  <g fill="none" stroke="#c9a15a" stroke-width="1.5">
+    <rect x="90" y="80" width="150" height="110" rx="6"/>
+    <rect x="105" y="95" width="120" height="20" rx="3" opacity="0.7"/>
+    <rect x="105" y="122" width="120" height="20" rx="3" opacity="0.5"/>
+    <rect x="105" y="149" width="120" height="20" rx="3" opacity="0.35"/>
+  </g>
+  <text x="165" y="218" fill="#a89a82" font-size="12" text-anchor="middle">DOM-узел на каждый слой</text>
+  <text x="165" y="238" fill="#a89a82" font-size="12" text-anchor="middle">чёткий вектор на ретине</text>
+  <!-- Canvas side -->
+  <text x="475" y="50" fill="#c9a15a" font-size="16" text-anchor="middle">renderer: canvas</text>
+  <rect x="400" y="80" width="150" height="110" rx="6" fill="none" stroke="#8a1f1f" stroke-width="2"/>
+  <text x="475" y="142" fill="#e8dfd0" font-size="14" text-anchor="middle">1 растровый слой</text>
+  <text x="475" y="218" fill="#a89a82" font-size="12" text-anchor="middle">дёшево при куче фигур,</text>
+  <text x="475" y="238" fill="#a89a82" font-size="12" text-anchor="middle">не трогает layout</text>
+</svg>

@@ -6,10 +6,13 @@ console pause menu (stylistic inspiration only, no third-party game assets used)
 ## Features
 
 - Mobile-first responsive menu (stacked single-column on narrow screens, two-pane rail+content on wider screens)
-- Sections: Character (about), Quest Log (projects), Inventory (tech stack), Chronicle (blog), Notice Board (contact)
+- Sections: Character (about), Quest Log (projects), Inventory (tech stack), Chronicle (blog), Notice Board (contact) — content in Russian
+- About page: fact-based "player stats" with explanations, perks (skill + proof), career timeline
+- Projects: icons, tech tags, status badges, per-project highlight lines
 - PWA: installable, offline app-shell caching
 - Ambient particle background computed in a Web Worker, off the main thread
-- Blog: build-time Markdown, no backend
+- Blog: build-time Markdown, no backend — tags, reading time, covers, full markdown styling
+- Comments: optional Remark42 or giscus embed, enabled via env vars (see `docs/comments-setup.md`)
 
 ## Dev
 
