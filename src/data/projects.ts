@@ -113,6 +113,18 @@ export const projects: Project[] = [
     highlight: 'DSP руками: фильтрация шума и модуляция без готовых библиотек эффектов.',
   },
   {
+    slug: 'tiny-hits',
+    name: 'tiny-hits',
+    description: 'Счётчик просмотров страниц: одна Netlify-функция + Blobs, без базы и без куки.',
+    category: 'tools',
+    repoUrl: 'https://github.com/kakachaDev/tiny-hits',
+    icon: '📈',
+    tags: ['TypeScript', 'Netlify Functions', 'Serverless'],
+    year: 2026,
+    status: 'active',
+    highlight: 'Считает просмотры постов в этом блоге — цифра в шапке поста живая.',
+  },
+  {
     slug: 'tg-video-downloader',
     name: 'tg-video-downloader',
     description: 'Telegram-бот (inline) для скачивания видео из YouTube, TikTok и Instagram.',

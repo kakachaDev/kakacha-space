@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { projects } from './projects'
 
 describe('projects data', () => {
-  it('has exactly 11 entries', () => {
-    expect(projects).toHaveLength(11)
+  it('has exactly 12 entries', () => {
+    expect(projects).toHaveLength(12)
   })
 
   it('every project has a unique slug', () => {

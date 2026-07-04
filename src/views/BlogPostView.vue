@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBlogPost } from '../composables/useBlogPost'
+import { usePostHits } from '../composables/usePostHits'
 import { formatDateRu } from '../utils/formatDate'
+import { ruPlural } from '../utils/plural'
 import CommentsSection from '../components/CommentsSection.vue'
 
 const props = defineProps<{ slug: string }>()
 const { post } = useBlogPost(props.slug)
+const { hits } = usePostHits(props.slug)
 
 const metaLine = computed(() => {
   if (!post.value) return ''
   return `${formatDateRu(post.value.date)} · ${post.value.readingMinutes} мин чтения`
+})
+
+const hitsLine = computed(() => {
+  if (hits.value === null) return ''
+  return `${hits.value} ${ruPlural(hits.value, 'просмотр', 'просмотра', 'просмотров')}`
 })
 </script>
 
@@ -20,6 +28,7 @@ const metaLine = computed(() => {
       <h2 class="display">{{ post.title }}</h2>
       <p class="post-meta">
         {{ metaLine }}
+        <span v-if="hitsLine" data-testid="hits">· {{ hitsLine }}</span>
         <span v-if="post.tags.length" class="post-meta__tags">
           <span v-for="tag in post.tags" :key="tag">#{{ tag }}</span>
         </span>
