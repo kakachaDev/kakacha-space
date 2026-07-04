@@ -23,6 +23,14 @@
   </head>
   <body>
     <div id="app"></div>
+    <!-- Статическая копия формы: по ней Netlify при деплое регистрирует форму "contact";
+         рабочая форма рендерится Vue в ContactView и постит с теми же полями -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="text" name="reply" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
